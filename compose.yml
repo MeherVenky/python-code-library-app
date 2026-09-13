@@ -3,6 +3,8 @@ services:
     image: mehervenkay/pyapp:db_img
     deploy:
       replicas: 1
+    networks:
+      - mynetwork
     ports:
       - "3306:3306"
   auth_service:
@@ -11,6 +13,8 @@ services:
       replicas: 1
     ports:
       - "5001:5001"
+    networks:
+      - mynetwork
     depends_on:
       - db
   book_service:
