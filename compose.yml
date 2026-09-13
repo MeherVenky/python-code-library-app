@@ -2,7 +2,7 @@ services:
  db:
     image: mehervenkay/pyapp:db_img
     deploy:
-    replicas: 2
+      replicas: 2
     ports:
       - "3306:3306"
 auth_service:
