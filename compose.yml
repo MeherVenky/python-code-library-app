@@ -1,11 +1,11 @@
 services:
- db:
+  db:
     image: mehervenkay/pyapp:db_img
     deploy:
-    replicas: 1
+      replicas: 1
     ports:
       - "3306:3306"
- auth_service:
+  auth_service:
     image: mehervenkay/pyapp:auth_img
     deploy:
       replicas: 1
@@ -13,17 +13,17 @@ services:
       - "5001:5001"
     depends_on:
       - db
- book_service:
+  book_service:
     image: mehervenkay/pyapp:book_img
-    deploy:   
-     replicas: 1
+    deploy:
+      replicas: 1
     ports:
       - "5002:5002"
     networks:
       - mynetwork
     depends_on:
-      - db   
- borrow_service:
+      - db
+  borrow_service:
     image: mehervenkay/pyapp:borrow_img
     deploy:
       replicas: 1
@@ -33,7 +33,7 @@ services:
       - mynetwork
     depends_on:
       - db
- frontend:
+  frontend:
     image: mehervenkay/pyapp:frontend_img
     deploy:
       replicas: 1
@@ -48,5 +48,3 @@ services:
 networks:
   mynetwork:
     driver: overlay
-
-    
